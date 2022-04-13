@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>text grow and shrink</title>
+<script>
+    var font=0;
+    var loading;
+    function start(){
+        loading=window.setInterval("inc()",100);
+    }
+    function inc(){
+        font+=1;
+        res.innerHTML="TEXT-GROWING";
+        res.style.fontSize=font;
+        if (font>=50){
+            window.clearTimeout(loading);
+            loading=window.setInterval("dec()",100);
+        }
+        res.style.color="red";
+    }
+    function dec(){
+        font-=1;
+        res.innerHTML="TEXT-SHRINKING";
+        res.style.fontSize=font;
+        if(font==5){
+            window.clearTimeout(loading);
+            loading=window.setInterval("inc()",100);
+        }
+        res.style.color="blue";
+    }
+</script>
+</head>
+<body onload="start()">
+    <center>
+    <p id="res"></p>
+    </center>
+</body>
+</html>
